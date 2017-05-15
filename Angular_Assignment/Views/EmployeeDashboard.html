@@ -1,0 +1,12 @@
+﻿<div ng-controller="EmployeesController" style="color: #559C77;">
+    <div>
+        <h3>Employee Administration</h3><br /><br />
+    </div>
+
+    <div>
+        <button class="btn-default" ng-click="addEmployee()" ng-disabled="frm.$invalid" >Add new employee </button>     
+    </div>
+
+    <employee-details info="employees" update="updateEmployees(employee)" delete="deleteEmployee(employee)"></employee-details>
+</div>
+    

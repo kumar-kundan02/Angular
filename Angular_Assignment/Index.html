@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>HomePage</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="Scripts/angular-route.min.js"></script>
+
+    <script src="MyApp.js"></script>
+    <script src="Controller/EmployeesController.js"></script>
+    <script src="Controller/modalController.js"></script>
+    <script src="Controller/saveModalController.js"></script>
+    <script src="Services/LocalStorageService.js"></script>
+    <script src="Services/employeeDetailsDirective.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="615085215002-ml1kmfs1dvo0fn6p6isium1pep1fjin1.apps.googleusercontent.com">
+    <base href="/" />
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); 
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); 
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+                alert("You are successfully Logged Out !!")
+            });
+        }
+    </script>
+
+
+    <style>
+        body {
+            background-image: url("../assets/Baby-Blue-1080p-Wallpapers.jpg");
+            color: #559C77;
+        }
+    </style>
+</head>
+<body ng-app="Employees" ng-controller="EmployeesController">
+    <div class="container">
+        <div>
+            <h1>Welcome to Employee Portal</h1><br />
+        </div>
+        <br />
+        <div class="row">             
+            <div class="col-md-5"><span class="g-signin2" data-onsuccess="onSignIn"></span></div>    
+            <div class="col-md-7"><span><a href="/Login" onclick="signOut();">Sign out</a></span></div>
+        </div>     
+        
+        <br /><br />
+        <div ng-view>
+
+        </div>
+    </div>
+</body>
+</html>
